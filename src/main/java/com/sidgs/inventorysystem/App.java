@@ -10,50 +10,45 @@ import com.sidgs.inventorysystem.modal.*;
 
 public class App {
 	public static void main(String[] args) {
-		Scanner s = new Scanner(System.in);
 		System.out.println("hi");
+		Scanner s = new Scanner(System.in);
 		InventoryService invService = new InventoryServiceImpl();
 		boolean flag = true;
 		do {
 			String input = s.nextLine();
 			String splitAr[] = input.split(" ", 0);
-			/*
-			 * for (String splitted : splitAr) { System.out.println(splitted); }
-			 */
 			switch (splitAr[0]) {
 			case "create":
-				//crSystem.out.println("inside create block");
-				double firstInt = Double.parseDouble(splitAr[2]);
-				double secondInt = Double.parseDouble(splitAr[3]);
-				invService.create(splitAr[1], firstInt, secondInt);
+				double costPrice = Double.parseDouble(splitAr[2]);
+				double sellingPrice = Double.parseDouble(splitAr[3]);
+				invService.create(splitAr[1], costPrice, sellingPrice);
 				break;
 
 			case "updateBuy":
-				//System.out.println("inside updateBuy block");
 				int quantity = Integer.parseInt(splitAr[2]);
 				invService.updateBuy(splitAr[1], quantity);		
 				break;
 				
-			case "read":
+			case "updateSell":
+				int quantitySell = Integer.parseInt(splitAr[2]);
+				invService.updateSell(splitAr[1], quantitySell);		
+				break;
+			
+			case "delete":
+				invService.delete(splitAr[1]);
+				break;
+				
+			case "report":
 				invService.readInventory();		
 				break;
 				
 			case "exit" :
 			     flag = false;
 			     break;
-
-			/*
-			 * case "updateSell" : invService.create(secondWord,firstInt,secondInt); break;
-			 * case "delete" : invService.create(secondWord,firstInt,secondInt); break;
-			 */
 			}
 		} while (flag); // while ends
 	}
 
-	/*
-	 * private determiningWhichMethodTocallOnTheBasisOfUserInput() {
-	 * 
-	 * }
-	 */
+	
 
 }

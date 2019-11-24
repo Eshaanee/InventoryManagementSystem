@@ -37,7 +37,7 @@ public class Items {
 		this.sellingPrice = sellingPrice;
 	}
 	public int getQuantity() {
-		return quantity;
+	    return quantity;
 	}
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
